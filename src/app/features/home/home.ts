@@ -22,13 +22,14 @@ export class Home {
 
   compareProfiles() {
 
+    this.profileService.getUsers().subscribe(users => {
 
-
-    this.profileService.getUsers().subscribe((data: any) => {
-
-      console.log(data);
-      alert(data);
+      this.profiles = users.map(user => ({
+        id: user.id.toString(),
+        name: user.name
+      }));
 
     });
+
   }
 }

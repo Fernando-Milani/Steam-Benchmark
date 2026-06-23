@@ -11,9 +11,8 @@ export class ProfileService {
   constructor(private http: HttpClient) {}
 
   getUsers() {
-    return this.http.get(
+    return this.http.get<any[]>(
       'https://jsonplaceholder.typicode.com/users'
     );
   }
-
 }
