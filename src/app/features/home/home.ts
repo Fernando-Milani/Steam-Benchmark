@@ -21,15 +21,27 @@ export class Home {
   ) {}
 
   compareProfiles() {
+    this.profiles = [];
 
-    this.profileService.getUsers().subscribe(users => {
+    if (this.profile1.trim()) {
+      this.profiles.push({
+        id: '1',
+        name: this.profile1
+      });
+    }
 
-      this.profiles = users.map(user => ({
-        id: user.id.toString(),
-        name: user.name
-      }));
+    if (this.profile2.trim()) {
+      this.profiles.push({
+        id: '2',
+        name: this.profile2
+      });
+    }
 
-    });
-
+    if (this.profile3.trim()) {
+      this.profiles.push({
+        id: '3',
+        name: this.profile3
+      });
+    }
   }
 }
