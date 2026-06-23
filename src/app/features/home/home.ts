@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Profile } from '../../models/profile.model';
 
 @Component({
   selector: 'app-home',
@@ -9,9 +10,19 @@ import { Component } from '@angular/core';
 
 export class Home {
 
-  compareProfiles() {
-    alert('Comparando perfis...');
-    console.log('Comparando perfis...');
-  }
+  profiles: Profile[] = [];
 
+  compareProfiles() {
+
+      this.profiles = [
+          {
+              id: '1',
+              name: 'Fernando'
+          },
+          {
+              id: '2',
+              name: 'João'
+          }
+      ];
+  }
 }

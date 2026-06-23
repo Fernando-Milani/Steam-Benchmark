@@ -9,9 +9,11 @@
 <div>
     <label for="profile1">Profile 1</label>
     <input
+        #profileOne
         id="profile1"
         type="text"
-        placeholder="Steam ID or profile URL">
+        placeholder="Steam ID or profile URL"
+        (input)="profile1 = profileOne.value">
 </div>
 
 <br>
@@ -19,9 +21,11 @@
 <div>
     <label for="profile2">Profile 2</label>
     <input
+        #profileTwo
         id="profile2"
         type="text"
-        placeholder="Steam ID or profile URL">
+        placeholder="Steam ID or profile URL"
+        (input)="profile2 = profileTwo.value">
 </div>
 
 <br>
@@ -29,9 +33,11 @@
 <div>
     <label for="profile3">Profile 3</label>
     <input
+        #profileThree
         id="profile3"
         type="text"
-        placeholder="Steam ID or profile URL">
+        placeholder="Steam ID or profile URL"
+        (input)="profile3 = profileThree.value">
 </div>
 
 <br>
@@ -39,3 +45,13 @@
 <button (click)="compareProfiles()">
     Compare Profiles
 </button>
+
+<hr>
+
+<h3>Profiles to Compare</h3>
+
+@for(profile of profiles; track profile.id) {
+
+    <p>{{ profile.name }}</p>
+
+}
