@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Profile } from '../../models/profile.model';
+import { ProfileService } from '../../services/profile';
 
 @Component({
   selector: 'app-home',
@@ -10,19 +11,24 @@ import { Profile } from '../../models/profile.model';
 
 export class Home {
 
+  profile1 = '';
+  profile2 = '';
+  profile3 = '';
   profiles: Profile[] = [];
+
+  constructor(
+    private profileService: ProfileService
+  ) {}
 
   compareProfiles() {
 
-      this.profiles = [
-          {
-              id: '1',
-              name: 'Fernando'
-          },
-          {
-              id: '2',
-              name: 'João'
-          }
-      ];
+
+
+    this.profileService.getUsers().subscribe((data: any) => {
+
+      console.log(data);
+      alert(data);
+
+    });
   }
 }
