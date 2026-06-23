@@ -48,10 +48,24 @@
 
 <hr>
 
-<h3>Profiles to Compare</h3>
+<h3>Profiles to Compare:</h3>
 
-@for(profile of profiles; track profile.id) {
+@for(profile of profiles; track profile.steamId) {
 
-    <p>{{ profile.name }}</p>
+    <div>
+
+        <img
+            [src]="profile.avatar"
+            [alt]="profile.name">
+
+        <p>Name: {{ profile.name }}</p>
+
+        <p>Steam ID: {{ profile.steamId }}</p>
+
+        <p>Total Hours: {{ profile.totalHours }}</p>
+
+        <hr>
+
+    </div>
 
 }

@@ -21,27 +21,28 @@ export class Home {
   ) {}
 
   compareProfiles() {
-    this.profiles = [];
 
-    if (this.profile1.trim()) {
-      this.profiles.push({
-        id: '1',
-        name: this.profile1
-      });
-    }
+    this.profiles = [
+      {
+        steamId: '76561198000000001',
+        name: 'Fernando',
+        avatar: 'https://placehold.co/100',
+        totalHours: 1200
+      },
+      {
+        steamId: '76561198000000002',
+        name: 'Gaben',
+        avatar: 'https://placehold.co/100',
+        totalHours: 5400
+      },
+      {
+        steamId: '76561198000000003',
+        name: 'Pedro',
+        avatar: 'https://placehold.co/100',
+        totalHours: 900
+      }
+    ];
 
-    if (this.profile2.trim()) {
-      this.profiles.push({
-        id: '2',
-        name: this.profile2
-      });
-    }
-
-    if (this.profile3.trim()) {
-      this.profiles.push({
-        id: '3',
-        name: this.profile3
-      });
-    }
   }
+
 }
