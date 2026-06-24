@@ -16,10 +16,12 @@ export class Home {
   profile3 = '';
 
   profiles: Profile[] = [];
+  commonGames: any[] = [];
 
   constructor(
     private steamService: SteamService
   ) {}
+  
 
   compareProfiles() {
 
@@ -32,6 +34,14 @@ export class Home {
     if (steamIds.length === 0) {
       return;
     }
+
+    this.steamService
+      .getCommonGames(steamIds)
+      .subscribe((games: any[]) => {
+
+        this.commonGames = games;
+
+      });
 
     this.steamService
       .getPlayerSummaries(steamIds)
@@ -65,5 +75,6 @@ export class Home {
       });
 
   }
+  
 
 }

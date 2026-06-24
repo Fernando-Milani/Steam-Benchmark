@@ -28,6 +28,16 @@ export class SteamService {
 
   }
 
+  getCommonGames(steamIds: string[]) {
+
+  const ids = steamIds.join(',');
+
+  return this.http.get<any[]>(
+    `${this.apiUrl}/steam/common-games/${ids}`
+  );
+
+}
+
   getStats(steamId: string) {
 
     return this.http.get<any>(
