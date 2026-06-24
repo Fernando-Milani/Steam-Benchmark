@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Profile } from '../../models/profile.model';
-import { ProfileService } from '../../services/profile';
+import { SteamService } from '../../services/steam';
 
 @Component({
   selector: 'app-home',
@@ -17,31 +17,29 @@ export class Home {
   profiles: Profile[] = [];
 
   constructor(
-    private profileService: ProfileService
+    private steamService: SteamService
   ) {}
 
   compareProfiles() {
 
-    this.profiles = [
-      {
-        steamId: '76561198000000001',
-        name: 'Fernando',
-        avatar: 'https://placehold.co/100',
-        totalHours: 1200
-      },
-      {
-        steamId: '76561198000000002',
-        name: 'Gaben',
-        avatar: 'https://placehold.co/100',
-        totalHours: 5400
-      },
-      {
-        steamId: '76561198000000003',
-        name: 'Pedro',
-        avatar: 'https://placehold.co/100',
-        totalHours: 900
-      }
-    ];
+    if (!this.profile1.trim()) {
+      return;
+    }
+
+    this.steamService
+      .getPlayerSummary(this.profile1)
+      .subscribe((player: any) => {
+
+        this.profiles = [
+          {
+            steamId: player.steamid,
+            name: player.personaname,
+            avatar: player.avatarfull,
+            totalHours: 0
+          }
+        ];
+
+      });
 
   }
 
