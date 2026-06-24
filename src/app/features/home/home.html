@@ -56,13 +56,17 @@
 
         <img
             [src]="profile.avatar"
-            [alt]="profile.name">
-
+            [alt]="profile.name"
+            width="100">
         <p>Name: {{ profile.name }}</p>
-
         <p>Steam ID: {{ profile.steamId }}</p>
-
+        <p>Total Games: {{ profile.totalGames }}</p>
         <p>Total Hours: {{ profile.totalHours }}</p>
+        <p>Favorite Game: {{ profile.favoriteGame }}</p>
+        <img
+            [src]="profile.favoriteGameIcon"
+            [alt]="profile.favoriteGame"
+            width="50">
 
         <hr>
 

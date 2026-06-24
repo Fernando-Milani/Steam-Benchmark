@@ -18,4 +18,22 @@ export class SteamService {
 
   }
 
+  getPlayerSummaries(steamIds: string[]) {
+
+    const ids = steamIds.join(',');
+
+    return this.http.get<any[]>(
+      `${this.apiUrl}/steam/profiles/${ids}`
+    );
+
+  }
+
+  getStats(steamId: string) {
+
+    return this.http.get<any>(
+      `${this.apiUrl}/steam/stats/${steamId}`
+    );
+
+  }
+
 }

@@ -14,6 +14,7 @@ export class Home {
   profile1 = '';
   profile2 = '';
   profile3 = '';
+
   profiles: Profile[] = [];
 
   constructor(
@@ -22,22 +23,44 @@ export class Home {
 
   compareProfiles() {
 
-    if (!this.profile1.trim()) {
+    const steamIds = [
+      this.profile1,
+      this.profile2,
+      this.profile3
+    ].filter(id => id.trim());
+
+    if (steamIds.length === 0) {
       return;
     }
 
     this.steamService
-      .getPlayerSummary(this.profile1)
-      .subscribe((player: any) => {
+      .getPlayerSummaries(steamIds)
+      .subscribe((players: any[]) => {
 
-        this.profiles = [
-          {
-            steamId: player.steamid,
-            name: player.personaname,
-            avatar: player.avatarfull,
-            totalHours: 0
-          }
-        ];
+        this.profiles = players.map(player => ({
+          steamId: player.steamid,
+          name: player.personaname,
+          avatar: player.avatarfull,
+          totalGames: 0,
+          totalHours: 0,
+          favoriteGame: '',
+          favoriteGameIcon: ''
+        }));
+
+        this.profiles.forEach(profile => {
+
+          this.steamService
+            .getStats(profile.steamId)
+            .subscribe((stats: any) => {
+
+              profile.totalGames = stats.totalGames;
+              profile.totalHours = stats.totalHours;
+              profile.favoriteGame = stats.favoriteGame;
+              profile.favoriteGameIcon = stats.favoriteGameIcon;
+
+            });
+
+        });
 
       });
 

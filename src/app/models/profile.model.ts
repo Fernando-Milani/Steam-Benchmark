@@ -1,6 +1,12 @@
 export interface Profile {
+
     steamId: string;
     name: string;
     avatar: string;
-    totalHours: number;
+
+    totalGames?: number;
+    totalHours?: number;
+    favoriteGame?: string;
+    favoriteGameIcon?: string;
+
 }
